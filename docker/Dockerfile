@@ -8,7 +8,7 @@ ENV PUBLIC_PATH="/static/_nuxt/"
 # hadolint ignore=DL3008
 RUN apt-get update \
  && apt-get install -y --no-install-recommends git python3 make g++ ca-certificates \
- && git config --global url."https://github.com/".insteadOf git://github.com/ \
+ && git config --global url."https://github.com/".insteadOf git://github   .com/ \
  && yarn install --network-timeout 1000000 \
  && yarn build \
  && apt-get clean \
@@ -65,7 +65,7 @@ RUN python manage.py collectstatic --noinput \
  && chown -R doccano:doccano .
 
 VOLUME /data
-ENV DATABASE_URL="sqlite:////data/doccano.db"
+ENV DATABASE_URL="postgres://postgres:We.Save.The.World.123!@/cloudsql/katapult-vc:europe-north1:5432/doccano?sslmode=disable"
 
 ENV DEBUG="False"
 ENV STANDALONE="True"
