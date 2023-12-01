@@ -1,0 +1,10 @@
+steps:
+- name: "gcr.io/cloud-builders/docker"
+  args:
+  - build
+  - "--tag=gcr.io/katapult-vc/doccano"
+  - "--file=./docker/Dockerfile"
+  - .
+...
+images:
+- "gcr.io/katapult-vc/doccano"
